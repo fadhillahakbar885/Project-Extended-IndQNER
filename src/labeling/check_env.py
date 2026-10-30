@@ -5,3 +5,4 @@ for pkg in pkgs:
         print(f"{pkg}: {getattr(m, '__version__', 'installed')}")
     except ImportError:
         print(f"{pkg}: NOT installed")
+

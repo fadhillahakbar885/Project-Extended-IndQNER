@@ -159,3 +159,4 @@ Kelas: """
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(self.audit_log, f, ensure_ascii=False, indent=2)
         print(f"📝 Saved LLM audit log: {filepath} ({len(self.audit_log)} calls logged)")
+

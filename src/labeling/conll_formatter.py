@@ -68,3 +68,4 @@ class CoNLLFormatter:
                 else:
                     f.write("\n")
         print(f"💾 File CoNLL berhasil disimpan: {filepath} ({len(verses_data)} ayat)")
+

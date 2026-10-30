@@ -114,3 +114,4 @@ class KamusIndQNER:
             return self.dictionary[clean_key]
 
         return None
+

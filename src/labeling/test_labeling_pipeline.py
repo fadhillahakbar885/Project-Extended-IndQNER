@@ -41,3 +41,4 @@ tagged_1_1 = label_manager.process_verse_to_conll(trans_1_1, cands_1_1)
 print(CoNLLFormatter.to_conll_string(tagged_1_1))
 print("="*70)
 print("✅ TAHAP 3 BERHASIL DIUJI DENGAN INTEGRITAS FORMAT 100%!")
+

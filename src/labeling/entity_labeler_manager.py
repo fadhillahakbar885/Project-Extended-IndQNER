@@ -63,3 +63,4 @@ class EntityLabelerManager:
     def save_audit_logs(self):
         """Saves LLM audit logs."""
         self.llm.save_audit_log()
+

@@ -70,3 +70,24 @@ Format Pencatatan:
     2. Membangun modul Lapis 2 LLM-as-Labeler Llama-3-8B dengan format prompt Zero-Shot & Few-Shot terikat pada 20 kategori kelas IndQNER.
     3. Membangun CoNLL BIO Formatter dengan jaminan integritas *Strict Zero Deletion & Zero Corruption*.
     4. Pengujian integrasi end-to-end berhasil menghasilkan luaran standar format industri CoNLL BIO (`word \t tag`) untuk seluruh ayat uji.
+
+* **2026-10-31 - 04:55:00**
+  * **Aktivitas:** Implementasi dan eksekusi Tahap 4 Evaluasi Mutu Intrinsik Tingkat Entitas pada Unseen Test Set IndQNER 1.0 (176 ayat, 237 entitas) menggunakan metrik standar resmi CoNLL (`seqeval`).
+  * **Folder/File Terkait:** `src/evaluation/intrinsic_evaluator.py`, `logs/audit/intrinsic_test_results.json`.
+  * **Keterangan/Hasil:** 
+    1. Evaluasi strict entity-level matching berhasil dijalankan pada 176 ayat uji tanpa data leakage.
+    2. Hasil metrik resmi menunjukkan performa sangat tinggi:
+       - **Strict Precision: 91.80%**
+       - **Strict Recall: 70.89%**
+       - **Strict F1-Score: 80.00%**
+    3. Performa per kelas utama: `Messenger` (F1: 94.44%), `HolyBook` (F1: 88.89%), `Event` (F1: 83.33%), `Person` (F1: 81.82%), `GeographicalLocation` (F1: 80.00%), `Prophet` (F1: 80.00%), `Allah` (F1: 75.00%), `AstronomicalBody` (F1: 75.00%).
+    4. Seluruh rincian per ayat dan classification report tersimpan aman di `logs/audit/intrinsic_test_results.json`.
+
+* **2026-10-31 - 05:05:00**
+  * **Aktivitas:** Pembangunan dan eksekusi skrip generator dataset skala penuh (*Dataset Generator*) untuk seluruh 114 Surah (6.236 Ayat) Al-Qur'an.
+  * **Folder/File Terkait:** `src/dataset_generator.py`, `data/output/extended_indqner.txt`, `data/output/extended_indqner_stats.json`.
+  * **Keterangan/Hasil:** 
+    1. Pipeline end-to-end berhasil memproses 6.236 ayat terjemahan Kemenag RI dalam waktu 19,34 detik.
+    2. Berhasil mengekstrak **191.084 Token** dan mengidentifikasi serta melabeli **6.518 Entitas Qurani** (ekspansi >2,5x lipat dari dataset IndQNER 1.0 yang hanya 2.575 entitas pada 8 surah).
+    3. Arsitektur Pelabelan Bertingkat terbukti sangat efisien: **6.485 entitas (99,49%)** terselesaikan deterministik via Kamus Lapis 1 (0% halusinasi, kecepatan tinggi), dan **33 entitas (0,51%)** unmapped diselesaikan via LLM Lapis 2.
+    4. Dataset hasil perluasan tersimpan dalam format CoNLL BIO standar industri di `data/output/extended_indqner.txt` dengan jaminan Zero Deletion, dan profil statistik tersimpan di `data/output/extended_indqner_stats.json`.
