@@ -18,7 +18,7 @@ class EntityAcquisitionManager:
         """
         Tahap 2.5: Resolusi Konflik Span & Deduplikasi
         1. Longest Match Priority (Greedy selection for overlapping spans).
-        2. Boundary Trimming.
+        2. Strict Relative Trimming (whitespace & sentence punctuation, preserves transliteration quotes).
         3. Merge metadata on exact duplicates.
         """
         if not raw_candidates:
@@ -37,10 +37,12 @@ class EntityAcquisitionManager:
             c_start = cand["start"]
             c_end = cand["end"]
 
-            # Trim trailing/leading punctuation if inadvertently included
-            clean_text = target_text[c_start:c_end].strip(".,;:!?\"'()«»“”")
+            # Trim trailing/leading whitespace and sentence punctuation, but preserve transliteration apostrophes
+            raw_span = target_text[c_start:c_end]
+            clean_text = raw_span.strip(" \t\n\r.,;:!?()[]«»\"“”")
             if clean_text:
-                c_start = target_text.find(clean_text, c_start)
+                rel_offset = raw_span.find(clean_text)
+                c_start = c_start + rel_offset
                 c_end = c_start + len(clean_text)
                 cand["start"] = c_start
                 cand["end"] = c_end
@@ -92,4 +94,3 @@ class EntityAcquisitionManager:
     def save_audit_logs(self):
         """Saves all channel audit logs."""
         self.ch1.save_audit_log()
-

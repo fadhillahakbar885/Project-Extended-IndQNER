@@ -8656,7 +8656,7 @@ wajib	O
 )	O
 berpuasa	O
 tiga	O
-hari	B-Event
+hari	O
 dalam	O
 (	O
 masa	O
@@ -8665,7 +8665,7 @@ haji	B-Event
 dan	O
 tujuh	O
 (	O
-hari	B-Event
+hari	O
 )	O
 setelah	O
 kamu	O
@@ -8673,7 +8673,7 @@ kembali	O
 .	O
 Itulah	O
 sepuluh	O
-hari	B-Event
+hari	O
 yang	O
 sempurna	O
 .	O
@@ -16818,12 +16818,12 @@ penciptaan	O
 Isa	B-Messenger
 bagi	O
 Allah	B-Allah
-adalah	B-Prophet
+adalah	O
 seperti	O
 (	O
 penciptaan	O
 )	O
-Adam	O
+Adam	B-Prophet
 .	O
 Dia	O
 menciptakannya	O
@@ -57917,7 +57917,7 @@ kepada	O
 umat	O
 manusia	O
 pada	O
-hari	B-Event
+hari	O
 haji	B-Event
 akbar	O
 bahwa	O
@@ -102551,12 +102551,12 @@ dengan	O
 daun-daun	O
 (	O
 yang	O
-ada	B-Prophet
+ada	O
 di	O
 )	O
 surga	O
 .	O
-Adam	O
+Adam	B-Prophet
 telah	O
 melanggar	O
 (	O

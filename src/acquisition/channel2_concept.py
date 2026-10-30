@@ -4,7 +4,8 @@ from src.utils.text_utils import (
     clean_token_for_matching,
     levenshtein_distance,
     string_similarity,
-    normalize_text
+    normalize_text,
+    COMMON_WORDS_BLACKLIST
 )
 
 BASE = r"d:\SKRIPSI DILL KERJAIN\Proyek 2"
@@ -16,18 +17,29 @@ class Channel2ConceptExtractor:
             self.whitelist: Dict[str, dict] = json.load(f)
 
     def is_match(self, alias: str, candidate_text: str) -> Tuple[bool, float]:
-        clean_cand = clean_token_for_matching(candidate_text)
-        alias_clean = normalize_text(alias)
+        """
+        Adaptive matching for concept lemmas:
+        - Stopword blacklist guard: never allow generic words (e.g. 'hari' for 'haji')
+        - If |alias| <= 4: STRICT EXACT MATCH or apostrophe variant only
+        - If |alias| > 4:  Similarity >= 0.85
+        """
+        clean_cand = clean_token_for_matching(candidate_text).lower()
+        alias_clean = normalize_text(alias).lower()
         
-        dist = levenshtein_distance(alias_clean, clean_cand)
-        sim = string_similarity(alias_clean, clean_cand)
-        
+        # Stopword blacklist guard
+        if clean_cand in COMMON_WORDS_BLACKLIST and clean_cand != alias_clean:
+            return False, 0.0
+
         if len(alias_clean) <= 4:
-            valid = (dist <= 1)
+            if clean_cand == alias_clean:
+                return True, 1.0
+            if clean_cand.replace("'", "") == alias_clean.replace("'", ""):
+                return True, 0.95
+            return False, 0.0
         else:
+            sim = string_similarity(alias_clean, clean_cand)
             valid = (sim >= 0.85)
-            
-        return valid, sim
+            return valid, sim
 
     def extract(self, surah: int, ayah: int, qac_tokens: List[dict], target_tokens: List[dict]) -> List[dict]:
         """
@@ -103,4 +115,3 @@ class Channel2ConceptExtractor:
 
         candidates.sort(key=lambda x: x["start"])
         return candidates
-

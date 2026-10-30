@@ -2,12 +2,22 @@ import re, unicodedata
 
 ENCLITICS = ['-lah', '-pun', '-kah', '-nya', '-ku', '-mu', 'lah', 'pun', 'kah', 'nya', 'ku', 'mu']
 
+COMMON_WORDS_BLACKLIST = {
+    "ada", "adalah", "hari", "dan", "jika", "bila", "dari", "pada", "oleh", "bagi", 
+    "itu", "ini", "dia", "ia", "kami", "kamu", "mereka", "kita", "bisa", "akan", 
+    "telah", "belum", "sudah", "hanya", "juga", "lagi", "pun", "lah", "apa", "siapa",
+    "mana", "kapan", "mengapa", "bagaimana", "satu", "dua", "tiga", "empat", "lima",
+    "enam", "tujuh", "delapan", "sembilan", "sepuluh", "orang", "atas", "bawah"
+}
+
 def normalize_text(text: str) -> str:
-    """Normalizes transliteration quotes (ayn, hamzah) to standard apostrophe."""
+    """
+    Normalizes transliteration quotes (ayn, hamzah) to standard apostrophe without stripping.
+    Preserves exact string length and boundary spaces for 1:1 offset integrity.
+    """
     if not text:
         return ""
-    text = text.replace('‘', "'").replace('’', "'").replace('`', "'").replace('ʻ', "'")
-    return text.strip()
+    return text.replace('‘', "'").replace('’', "'").replace('`', "'").replace('ʻ', "'")
 
 def clean_footnotes(text: str) -> str:
     """

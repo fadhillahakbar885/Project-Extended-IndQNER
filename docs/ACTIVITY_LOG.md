@@ -96,6 +96,15 @@ Format Pencatatan:
   * **Aktivitas:** Penyusunan modul pengujian LLM-as-Labeler (Llama-3-8B) pada GPU T4 Google Colab dan ekstraksi berkas payload pengujian (Ablation Study).
   * **Folder/File Terkait:** `notebooks/Colab_Llama3_Labeler_T4.ipynb`, `data/intermediate/llm_colab_payload.json`, `src/labeling/prepare_llm_payload.py`, `src/labeling/integrate_colab_results.py`.
   * **Keterangan/Hasil:** 
-    1. Berhasil mengekstrak payload `llm_colab_payload.json` yang memuat 33 entitas unmapped 114 surah dan 237 entitas ground-truth test set resmi.
+    1. Berhasil mengekstrak payload `llm_colab_payload.json` yang memuat entitas unmapped dan 237 entitas ground-truth test set resmi.
     2. Menghasilkan notebook Jupyter teroptimasi GPU T4 (`notebooks/Colab_Llama3_Labeler_T4.ipynb`) menggunakan kuantisasi 4-bit (`bitsandbytes`) untuk pengujian Zero-Shot vs Few-Shot.
     3. Membangun modul integrasi kembali hasil prediksi Colab (`src/labeling/integrate_colab_results.py`) untuk pemutakhiran kamus dan dataset secara otomatis.
+
+* **2026-10-31 - 06:40:00**
+  * **Aktivitas:** Investigasi mendalam dan resolusi 2 celah teknis kritis (*Boundary Offset Drift* & *Short Name False Positive*) pada penangkapan kandidat entitas.
+  * **Folder/File Terkait:** `src/utils/text_utils.py`, `src/acquisition/channel1_pn.py`, `src/acquisition/channel2_concept.py`, `src/acquisition/entity_acquisition_manager.py`, `data/output/extended_indqner.txt`.
+  * **Keterangan/Hasil:** 
+    1. Menghilangkan `.strip()` pada `normalize_text` sehingga index string target dan regex 1:1 identik (mengeliminasi bug pemotongan huruf terakhir seperti `' hari Kiama'` -> `'hari Kiamat'`).
+    2. Menghapus toleransi Levenshtein edit distance 1 pada kata pendek $\le 4$ karakter dan menerapkan *Strict Exact Match + Stopword Blacklist* Bahasa Indonesia. Terbukti 100% melenyapkan false positive kata fungsi (*"hari"*, *"ada"*, *"adalah"*).
+    3. Entitas unmapped riil di korpus 114 surah terbukti murni tersisa 1 entitas sejati: `'Yasrib'` (QS. 33:13).
+    4. Dataset Extended IndQNER bersih teregenerasi memuat 6.514 entitas tervalidasi.

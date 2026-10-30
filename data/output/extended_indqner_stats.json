@@ -4,8 +4,8 @@
   "total_surahs": 114,
   "total_verses": 6236,
   "total_tokens": 191084,
-  "total_entities": 6518,
-  "average_entities_per_verse": 1.0452,
+  "total_entities": 6514,
+  "average_entities_per_verse": 1.0446,
   "average_tokens_per_verse": 30.6421,
   "class_distribution": {
     "Allah": 2953,
@@ -13,7 +13,7 @@
     "AstronomicalBody": 806,
     "Person": 461,
     "HolyBook": 355,
-    "Event": 247,
+    "Event": 243,
     "Prophet": 217,
     "AfterlifeLocation": 127,
     "GeographicalLocation": 70,
@@ -30,16 +30,16 @@
   "channel_distribution": {
     "Jalur_1_QAC_PN": 3512,
     "Jalur_4_RegEx_Selingkung": 1423,
-    "Jalur_2_QAC_Concept": 876,
-    "Jalur_3_Seed_Gazetteer": 434,
-    "Jalur_3_Seed_Gazetteer+Jalur_4_RegEx_Selingkung": 87,
-    "Jalur_2_QAC_Concept+Jalur_3_Seed_Gazetteer": 85,
-    "Jalur_1_QAC_PN+Jalur_3_Seed_Gazetteer": 61,
+    "Jalur_2_QAC_Concept": 872,
+    "Jalur_3_Seed_Gazetteer": 428,
+    "Jalur_3_Seed_Gazetteer+Jalur_4_RegEx_Selingkung": 91,
+    "Jalur_2_QAC_Concept+Jalur_3_Seed_Gazetteer": 86,
+    "Jalur_1_QAC_PN+Jalur_3_Seed_Gazetteer": 62,
     "Jalur_1_QAC_PN+Jalur_4_RegEx_Selingkung": 40
   },
   "label_source_distribution": {
-    "Lapis_1_Kamus_Deterministik": 6485,
-    "Lapis_2_LLM_as_Labeler": 33
+    "Lapis_1_Kamus_Deterministik": 6513,
+    "Lapis_2_LLM_as_Labeler": 1
   },
   "surah_summary": {
     "1": {
@@ -50,7 +50,7 @@
     "2": {
       "total_ayahs": 286,
       "total_tokens": 13986,
-      "total_entities": 566
+      "total_entities": 563
     },
     "3": {
       "total_ayahs": 200,
@@ -85,7 +85,7 @@
     "9": {
       "total_ayahs": 129,
       "total_tokens": 6074,
-      "total_entities": 251
+      "total_entities": 250
     },
     "10": {
       "total_ayahs": 109,
@@ -613,5 +613,5 @@
       "total_entities": 1
     }
   },
-  "generation_duration_seconds": 19.34
+  "generation_duration_seconds": 13.16
 }
