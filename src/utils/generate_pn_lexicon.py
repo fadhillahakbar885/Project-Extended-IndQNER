@@ -1,0 +1,689 @@
+import json, os
+
+BASE = r"d:\SKRIPSI DILL KERJAIN\Proyek 2"
+OUT_DIR = os.path.join(BASE, "data", "dictionaries")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# 107 QAC PN Lexicon with English Pivot, Indonesian Aliases, and Candidate Class
+PN_LEXICON = {
+  # Allah
+  "{ll~ah": {
+    "arabic": "اللّٰه",
+    "english_pivot": "Allah",
+    "aliases": ["Allah", "Allāh", "Allah-lah", "Allahlah"],
+    "class": "Allah"
+  },
+  "{ll~ahum~a": {
+    "arabic": "اللّٰهُمَّ",
+    "english_pivot": "O Allah",
+    "aliases": ["Allah", "ya Allah", "Ya Allah"],
+    "class": "Allah"
+  },
+
+  # Messengers (Rasul) - According to Islamic consensus & IndQNER guideline
+  "muwsaY`": {
+    "arabic": "مُوسَىٰ",
+    "english_pivot": "Moses",
+    "aliases": ["Musa", "Mūsa", "Musa-pun"],
+    "class": "Messenger"
+  },
+  "<iboraAhiym": {
+    "arabic": "إِبْرَاهِيم",
+    "english_pivot": "Abraham",
+    "aliases": ["Ibrahim", "Ibrāhīm"],
+    "class": "Messenger"
+  },
+  "nuwH": {
+    "arabic": "نُوح",
+    "english_pivot": "Noah",
+    "aliases": ["Nuh", "Nūḥ"],
+    "class": "Messenger"
+  },
+  "EiysaY": {
+    "arabic": "عِيسَىٰ",
+    "english_pivot": "Jesus",
+    "aliases": ["Isa", "‘Isa", "‘Īsā", "Isa Almasih"],
+    "class": "Messenger"
+  },
+  "masiyH": {
+    "arabic": "مَسِيح",
+    "english_pivot": "Messiah",
+    "aliases": ["Almasih", "Al-Masih", "Masih"],
+    "class": "Messenger"
+  },
+  "muHam~ad": {
+    "arabic": "مُحَمَّد",
+    "english_pivot": "Muhammad",
+    "aliases": ["Muhammad", "Muḥammad"],
+    "class": "Messenger"
+  },
+  ">aHomad": {
+    "arabic": "أَحْمَد",
+    "english_pivot": "Ahmad",
+    "aliases": ["Ahmad", "Aḥmad"],
+    "class": "Messenger"
+  },
+  "daAwud": {
+    "arabic": "دَاوُۥد",
+    "english_pivot": "David",
+    "aliases": ["Daud", "Dawud", "Dāwūd"],
+    "class": "Messenger"
+  },
+  "<isomaAEiyl": {
+    "arabic": "إِسْمَاعِيل",
+    "english_pivot": "Ishmael",
+    "aliases": ["Ismail", "Ismā‘īl"],
+    "class": "Messenger"
+  },
+  "luwT": {
+    "arabic": "لُوط",
+    "english_pivot": "Lot",
+    "aliases": ["Lut", "Lūṭ", "Luth"],
+    "class": "Messenger"
+  },
+  "$uEayob": {
+    "arabic": "شُعَيْب",
+    "english_pivot": "Shuaib",
+    "aliases": ["Syu'aib", "Syu‘aib", "Syuaib"],
+    "class": "Messenger"
+  },
+  "Sa`liH2": {
+    "arabic": "صَالِح",
+    "english_pivot": "Saleh",
+    "aliases": ["Saleh", "Ṣāliḥ", "Salih"],
+    "class": "Messenger"
+  },
+  "huwd": {
+    "arabic": "هُود",
+    "english_pivot": "Hud",
+    "aliases": ["Hud", "Hūd"],
+    "class": "Messenger"
+  },
+  "huwd2": {
+    "arabic": "هُود",
+    "english_pivot": "Hud",
+    "aliases": ["Hud", "Hūd"],
+    "class": "Messenger"
+  },
+  "yuwnus": {
+    "arabic": "يُونُس",
+    "english_pivot": "Jonah",
+    "aliases": ["Yunus", "Yūnus"],
+    "class": "Messenger"
+  },
+  "<iloyaAs": {
+    "arabic": "إِلْيَاس",
+    "english_pivot": "Elijah",
+    "aliases": ["Ilyas", "Ilyās"],
+    "class": "Messenger"
+  },
+
+  # Prophets (Nabi)
+  "A^dam": {
+    "arabic": "ءَادَم",
+    "english_pivot": "Adam",
+    "aliases": ["Adam", "Ādam"],
+    "class": "Prophet"
+  },
+  "<isoHaAq": {
+    "arabic": "إِسْحَاق",
+    "english_pivot": "Isaac",
+    "aliases": ["Ishaq", "Is-haq", "Isḥāq", "Ishak"],
+    "class": "Prophet"
+  },
+  "yaEoquwb": {
+    "arabic": "يَعْقُوب",
+    "english_pivot": "Jacob",
+    "aliases": ["Ya'qub", "Ya‘qub", "Ya‘qūb", "Yakub"],
+    "class": "Prophet"
+  },
+  "yuwsuf": {
+    "arabic": "يُوسُف",
+    "english_pivot": "Joseph",
+    "aliases": ["Yusuf", "Yūsuf"],
+    "class": "Prophet"
+  },
+  "ha`ruwn": {
+    "arabic": "هَارُون",
+    "english_pivot": "Aaron",
+    "aliases": ["Harun", "Hārūn"],
+    "class": "Prophet"
+  },
+  "sulayoma`n": {
+    "arabic": "سُلَيْمَان",
+    "english_pivot": "Solomon",
+    "aliases": ["Sulaiman", "Sulaimān"],
+    "class": "Prophet"
+  },
+  "zakariy~aA": {
+    "arabic": "زَكَرِيَّا",
+    "english_pivot": "Zechariah",
+    "aliases": ["Zakaria", "Zakariyya", "Zakariyyā"],
+    "class": "Prophet"
+  },
+  "yaHoyaY`": {
+    "arabic": "يَحْيَىٰ",
+    "english_pivot": "John",
+    "aliases": ["Yahya", "Yaḥyā"],
+    "class": "Prophet"
+  },
+  ">ay~uwb": {
+    "arabic": "أَيُّوب",
+    "english_pivot": "Job",
+    "aliases": ["Ayyub", "Ayyūb"],
+    "class": "Prophet"
+  },
+  "{loyasaEa": {
+    "arabic": "الْيَسَع",
+    "english_pivot": "Elisha",
+    "aliases": ["Ilyasa", "Ilyasa'", "Ilyasa‘"],
+    "class": "Prophet"
+  },
+  "<idoriys": {
+    "arabic": "إِدْرِيس",
+    "english_pivot": "Idris",
+    "aliases": ["Idris", "Idrīs"],
+    "class": "Prophet"
+  },
+
+  # Angels (Malaikat)
+  "jiboriyl": {
+    "arabic": "جِبْرِيل",
+    "english_pivot": "Gabriel",
+    "aliases": ["Jibril", "Jibrīl"],
+    "class": "Angel"
+  },
+  "miykaY`l": {
+    "arabic": "مِيكَىٰل",
+    "english_pivot": "Michael",
+    "aliases": ["Mikail", "Mīkā'īl"],
+    "class": "Angel"
+  },
+  "ha`ruwt": {
+    "arabic": "هَارُوت",
+    "english_pivot": "Harut",
+    "aliases": ["Harut", "Hārūt"],
+    "class": "Angel"
+  },
+  "ma`ruwt": {
+    "arabic": "مَارُوت",
+    "english_pivot": "Marut",
+    "aliases": ["Marut", "Mārūt"],
+    "class": "Angel"
+  },
+  "ma`lik2": {
+    "arabic": "مَالِك",
+    "english_pivot": "Malik",
+    "aliases": ["Malik", "Mālik"],
+    "class": "Angel"
+  },
+
+  # Holy Books (Kitab Suci)
+  "quro'aAn": {
+    "arabic": "قُرْءَان",
+    "english_pivot": "Quran",
+    "aliases": ["Al-Qur'an", "Al-Qur’an", "Qur'an", "Qur’an", "Alquran"],
+    "class": "HolyBook"
+  },
+  "t~aworaY`p": {
+    "arabic": "تَّوْرَىٰة",
+    "english_pivot": "Torah",
+    "aliases": ["Taurat", "Tawrāt"],
+    "class": "HolyBook"
+  },
+  "<injiyl": {
+    "arabic": "إِنجِيل",
+    "english_pivot": "Gospel",
+    "aliases": ["Injil", "Injīl"],
+    "class": "HolyBook"
+  },
+  "zabuwr": {
+    "arabic": "زَبُور",
+    "english_pivot": "Psalms",
+    "aliases": ["Zabur", "Zabūr"],
+    "class": "HolyBook"
+  },
+
+  # Persons / Groups / Peoples (Manusia / Kaum / Tokoh Sejarah)
+  "maroyam": {
+    "arabic": "مَرْيَم",
+    "english_pivot": "Mary",
+    "aliases": ["Maryam", "Maryam-lah"],
+    "class": "Person"
+  },
+  "firoEawon": {
+    "arabic": "فِرْعَوْن",
+    "english_pivot": "Pharaoh",
+    "aliases": ["Fir'aun", "Fir‘aun", "Firaun", "Fir'aun-lah", "Fir‘aun-lah", "Firaun-lah"],
+    "class": "Person"
+  },
+  "<isoraA}iyl": {
+    "arabic": "إِسْرَٰٓءِيل",
+    "english_pivot": "Israel",
+    "aliases": ["Israil", "Isrā'īl", "Bani Israil"],
+    "class": "Person"
+  },
+  "vamuwd": {
+    "arabic": "ثَمُود",
+    "english_pivot": "Thamud",
+    "aliases": ["Samud", "Ṡamūd", "kaum Samud"],
+    "class": "Person"
+  },
+  "EaAd2": {
+    "arabic": "عَاد",
+    "english_pivot": "Aad",
+    "aliases": ["'Ad", "‘Ad", "‘Ād", "kaum 'Ad", "kaum ‘Ad"],
+    "class": "Person"
+  },
+  "ha`ma`n": {
+    "arabic": "هَامَان",
+    "english_pivot": "Haman",
+    "aliases": ["Haman", "Hāmān"],
+    "class": "Person"
+  },
+  "qa`ruwn": {
+    "arabic": "قَارُون",
+    "english_pivot": "Korah",
+    "aliases": ["Qarun", "Qārūn"],
+    "class": "Person"
+  },
+  "jaAluwt": {
+    "arabic": "جَالُوت",
+    "english_pivot": "Goliath",
+    "aliases": ["Jalut", "Jālūt"],
+    "class": "Person"
+  },
+  "TaAluwt": {
+    "arabic": "طَالُوت",
+    "english_pivot": "Saul",
+    "aliases": ["Talut", "Ṭālūt"],
+    "class": "Person"
+  },
+  "Eimora`n": {
+    "arabic": "عِمْرَان",
+    "english_pivot": "Imran",
+    "aliases": ["Imran", "‘Imrān", "keluarga Imran"],
+    "class": "Person"
+  },
+  "s~aAmiriY~": {
+    "arabic": "سَّامِرِىّ",
+    "english_pivot": "Samaritan",
+    "aliases": ["Samiri", "Sāmiriy"],
+    "class": "Person"
+  },
+  "ya>ojuwj": {
+    "arabic": "يَأْجُوج",
+    "english_pivot": "Gog",
+    "aliases": ["Yakjuj", "Ya'juj", "Ya’juj"],
+    "class": "Person"
+  },
+  "ma>ojuwj": {
+    "arabic": "مَأْجُوج",
+    "english_pivot": "Magog",
+    "aliases": ["Makjuj", "Ma'juj", "Ma’juj"],
+    "class": "Person"
+  },
+  "luqoma`n": {
+    "arabic": "لُقْمَان",
+    "english_pivot": "Luqman",
+    "aliases": ["Luqman", "Luqmān"],
+    "class": "Person"
+  },
+  "tub~aE": {
+    "arabic": "تُبَّع",
+    "english_pivot": "Tubba",
+    "aliases": ["Tubba'", "Tubba‘", "kaum Tubba'"],
+    "class": "Person"
+  },
+  "A^zar": {
+    "arabic": "ءَازَر",
+    "english_pivot": "Azar",
+    "aliases": ["Azar", "Āzar"],
+    "class": "Person"
+  },
+  "Euzayor": {
+    "arabic": "عُزَيْر",
+    "english_pivot": "Ezra",
+    "aliases": ["Uzair", "‘Uzair"],
+    "class": "Person"
+  },
+  "zayod": {
+    "arabic": "زَيْد",
+    "english_pivot": "Zaid",
+    "aliases": ["Zaid"],
+    "class": "Person"
+  },
+  "qurayo$": {
+    "arabic": "قُرَيْش",
+    "english_pivot": "Quraysh",
+    "aliases": ["Quraisy", "kaum Quraisy"],
+    "class": "Person"
+  },
+
+  # Geographical Locations (Lokasi di Dunia)
+  "madoyan": {
+    "arabic": "مَدْيَن",
+    "english_pivot": "Madyan",
+    "aliases": ["Madyan"],
+    "class": "GeographicalLocation"
+  },
+  "miSor": {
+    "arabic": "مِصْر",
+    "english_pivot": "Egypt",
+    "aliases": ["Mesir"],
+    "class": "GeographicalLocation"
+  },
+  "baAbil": {
+    "arabic": "بَابِل",
+    "english_pivot": "Babylon",
+    "aliases": ["Babilonia", "Babil"],
+    "class": "GeographicalLocation"
+  },
+  "saba<": {
+    "arabic": "سَبَأ",
+    "english_pivot": "Sheba",
+    "aliases": ["Saba'", "Saba’", "negeri Saba'"],
+    "class": "GeographicalLocation"
+  },
+  "S~afaA": {
+    "arabic": "صَّفَا",
+    "english_pivot": "Safa",
+    "aliases": ["Safa", "Ṣafā"],
+    "class": "GeographicalLocation"
+  },
+  "marowap": {
+    "arabic": "مَرْوَة",
+    "english_pivot": "Marwah",
+    "aliases": ["Marwah"],
+    "class": "GeographicalLocation"
+  },
+  "Earafa`t": {
+    "arabic": "عَرَفَات",
+    "english_pivot": "Arafat",
+    "aliases": ["Arafat", "‘Arafāt", "Arafah"],
+    "class": "GeographicalLocation"
+  },
+  "bak~ap": {
+    "arabic": "بَكَّة",
+    "english_pivot": "Bakkah",
+    "aliases": ["Bakkah"],
+    "class": "GeographicalLocation"
+  },
+  "mak~ap": {
+    "arabic": "مَكَّة",
+    "english_pivot": "Makkah",
+    "aliases": ["Makkah", "Mekah"],
+    "class": "GeographicalLocation"
+  },
+  "bador": {
+    "arabic": "بَدْر",
+    "english_pivot": "Badr",
+    "aliases": ["Badar", "Badr"],
+    "class": "GeographicalLocation"
+  },
+  "Hunayon": {
+    "arabic": "حُنَيْن",
+    "english_pivot": "Hunayn",
+    "aliases": ["Hunain", "Ḥunain"],
+    "class": "GeographicalLocation"
+  },
+  "juwdiY~": {
+    "arabic": "جُودِىّ",
+    "english_pivot": "Judi",
+    "aliases": ["Judiy", "Jūdiy", "Gunung Judiy"],
+    "class": "GeographicalLocation"
+  },
+  "sayonaA^'": {
+    "arabic": "سَيْنَاء",
+    "english_pivot": "Sinai",
+    "aliases": ["Sinai", "Sīnā'", "Bukit Sinai"],
+    "class": "GeographicalLocation"
+  },
+  "siyniyn": {
+    "arabic": "سِينِين",
+    "english_pivot": "Sinin",
+    "aliases": ["Sinin", "Sīnīn", "Sinai"],
+    "class": "GeographicalLocation"
+  },
+  "yavorib": {
+    "arabic": "يَثْرِب",
+    "english_pivot": "Yathrib",
+    "aliases": ["Yatsrib", "Yaṡrib"],
+    "class": "GeographicalLocation"
+  },
+  ">aHoqaAf": {
+    "arabic": "أَحْقَاف",
+    "english_pivot": "Ahqaf",
+    "aliases": ["Ahqaf", "Aḥqāf"],
+    "class": "GeographicalLocation"
+  },
+  "<iram": {
+    "arabic": "إِرَم",
+    "english_pivot": "Iram",
+    "aliases": ["Iram"],
+    "class": "GeographicalLocation"
+  },
+  "madiynap": {
+    "arabic": "مَدِينَة",
+    "english_pivot": "Medina",
+    "aliases": ["Madinah"],
+    "class": "GeographicalLocation"
+  },
+
+  # Artifacts (Benda Bersejarah / Tempat Ibadah Suci)
+  "kaEobap": {
+    "arabic": "كَعْبَة",
+    "english_pivot": "Kaaba",
+    "aliases": ["Ka'bah", "Ka‘bah", "Kaabah"],
+    "class": "Artifact"
+  },
+
+  # Afterlife Locations (Lokasi di Akhirat)
+  "jahan~am": {
+    "arabic": "جَهَنَّم",
+    "english_pivot": "Hell",
+    "aliases": ["Jahanam", "neraka Jahanam"],
+    "class": "AfterlifeLocation"
+  },
+  "Eadon": {
+    "arabic": "عَدْن",
+    "english_pivot": "Eden",
+    "aliases": ["'Adn", "‘Adn", "Surga 'Adn", "Surga ‘Adn"],
+    "class": "AfterlifeLocation"
+  },
+  "saqar": {
+    "arabic": "سَقَر",
+    "english_pivot": "Saqar",
+    "aliases": ["Saqar"],
+    "class": "AfterlifeLocation"
+  },
+  "firodawos": {
+    "arabic": "فِرْدَوْس",
+    "english_pivot": "Paradise",
+    "aliases": ["Firdaus", "Surga Firdaus"],
+    "class": "AfterlifeLocation"
+  },
+  "laZaY`": {
+    "arabic": "لَظَىٰ",
+    "english_pivot": "Laza",
+    "aliases": ["Laza", "Laẓā"],
+    "class": "AfterlifeLocation"
+  },
+  "salosabiyl": {
+    "arabic": "سَلْسَبِيل",
+    "english_pivot": "Salsabil",
+    "aliases": ["Salsabil", "Salsabīl"],
+    "class": "AfterlifeLocation"
+  },
+  "zaq~uwm": {
+    "arabic": "زَقُّوم",
+    "english_pivot": "Zaqqum",
+    "aliases": ["Zaqum", "Zaqqūm", "pohon zaqum"],
+    "class": "AfterlifeLocation"
+  },
+
+  # Religions & Religious Groups (Agama & Pengikutnya)
+  "naSoraAniy~": {
+    "arabic": "نَصْرَانِىّ",
+    "english_pivot": "Christian",
+    "aliases": ["Nasrani", "orang-orang Nasrani"],
+    "class": "Religion"
+  },
+  "yahuwdiy~": {
+    "arabic": "يَهُودِىّ",
+    "english_pivot": "Jew",
+    "aliases": ["Yahudi", "orang-orang Yahudi"],
+    "class": "Religion"
+  },
+  "S~a`bi_#iyn": {
+    "arabic": "صَّٰبِـِٔين",
+    "english_pivot": "Sabians",
+    "aliases": ["Sabiin", "Ṣābi'īn", "orang-orang Sabiin"],
+    "class": "Religion"
+  },
+  "majuws": {
+    "arabic": "مَجُوس",
+    "english_pivot": "Magians",
+    "aliases": ["Majusi", "orang-orang Majusi"],
+    "class": "Religion"
+  },
+  "<isola`m": {
+    "arabic": "إِسْلَٰم",
+    "english_pivot": "Islam",
+    "aliases": ["Islam"],
+    "class": "Religion"
+  },
+  "r~uwm": {
+    "arabic": "رُّوم",
+    "english_pivot": "Romans",
+    "aliases": ["Romawi", "bangsa Romawi"],
+    "class": "Person"
+  },
+
+  # False Deities (Berhala / Sesembahan Palsu)
+  "{ll~a`t": {
+    "arabic": "لَّٰت",
+    "english_pivot": "Al-Lat",
+    "aliases": ["Lata", "Al-Lata", "Lāt"],
+    "class": "FalseDeity"
+  },
+  "{loEuz~aY`": {
+    "arabic": "عُزَّىٰ",
+    "english_pivot": "Al-Uzza",
+    "aliases": ["Uzza", "Al-'Uzza", "Al-‘Uzzā"],
+    "class": "FalseDeity"
+  },
+  "manaw`p": {
+    "arabic": "مَنَوٰة",
+    "english_pivot": "Manat",
+    "aliases": ["Manat", "Manāt"],
+    "class": "FalseDeity"
+  },
+  "baEol2": {
+    "arabic": "بَعْل",
+    "english_pivot": "Baal",
+    "aliases": ["Ba'al", "Ba‘l"],
+    "class": "FalseDeity"
+  },
+  "wad~": {
+    "arabic": "وَدّ",
+    "english_pivot": "Wadd",
+    "aliases": ["Wadd"],
+    "class": "FalseDeity"
+  },
+  "suwaAE": {
+    "arabic": "سُوَاع",
+    "english_pivot": "Suwa",
+    "aliases": ["Suwa'", "Suwā‘"],
+    "class": "FalseDeity"
+  },
+  "yaguwv": {
+    "arabic": "يَغُوث",
+    "english_pivot": "Yaghuth",
+    "aliases": ["Yagus", "Yagūṡ"],
+    "class": "FalseDeity"
+  },
+  "yaEuwq": {
+    "arabic": "يَعُوق",
+    "english_pivot": "Yauq",
+    "aliases": ["Ya'uq", "Ya‘ūq"],
+    "class": "FalseDeity"
+  },
+  "nasor": {
+    "arabic": "نَسْر",
+    "english_pivot": "Nasr",
+    "aliases": ["Nasr"],
+    "class": "FalseDeity"
+  },
+
+  # Astronomical Body (Benda Langit yang bertag PN)
+  "$~iEoraY`": {
+    "arabic": "شِّعْرَىٰ",
+    "english_pivot": "Sirius",
+    "aliases": ["Syira", "bintang Syi'ra", "Syi‘rā"],
+    "class": "AstronomicalBody"
+  },
+
+  # Events (Peristiwa Qurani bertag PN)
+  "ramaDaAn": {
+    "arabic": "رَمَضَان",
+    "english_pivot": "Ramadan",
+    "aliases": ["Ramadan", "Ramaḍān", "bulan Ramadan"],
+    "class": "Event"
+  },
+  "jumuEap": {
+    "arabic": "جُمُعَة",
+    "english_pivot": "Friday",
+    "aliases": ["Jumat", "Jumu‘ah", "hari Jumat"],
+    "class": "Event"
+  },
+
+  # Kelompok C Exclusions (Tag PN di QAC tetapi ditandai O di benchmark IndQNER)
+  "$ayoTa`n": {
+    "arabic": "شَيْطَٰن",
+    "english_pivot": "Satan",
+    "aliases": ["setan", "syaitan"],
+    "class": "EXCLUDED_O"
+  },
+  "jan~ap": {
+    "arabic": "جَنَّة",
+    "english_pivot": "Paradise/Garden",
+    "aliases": ["surga"],
+    "class": "EXCLUDED_O"
+  },
+  "<iboliys": {
+    "arabic": "إِبْلِيس",
+    "english_pivot": "Iblis",
+    "aliases": ["Iblis"],
+    "class": "EXCLUDED_O"
+  },
+  "musolim": {
+    "arabic": "مُسْلِم",
+    "english_pivot": "Muslim",
+    "aliases": ["muslim", "orang muslim"],
+    "class": "EXCLUDED_O"
+  },
+  "ja`hiliy~ap2": {
+    "arabic": "جَٰهِلِيَّة",
+    "english_pivot": "Jahiliyyah",
+    "aliases": ["jahiliah", "jahiliyah"],
+    "class": "EXCLUDED_O"
+  },
+  "s~ilom": {
+    "arabic": "سِّلْم",
+    "english_pivot": "Peace/Submission",
+    "aliases": ["kedamaian", "Islam"],
+    "class": "EXCLUDED_O"
+  }
+}
+
+out_path = os.path.join(OUT_DIR, "qac_pn_pivot_lexicon.json")
+with open(out_path, "w", encoding="utf-8") as f:
+    json.dump(PN_LEXICON, f, ensure_ascii=False, indent=2)
+
+print(f"✅ Saved 107 PN Lexicon to: {out_path}")
+print(f"Total entries: {len(PN_LEXICON)}")
+excluded = [k for k, v in PN_LEXICON.items() if v["class"] == "EXCLUDED_O"]
+active = [k for k, v in PN_LEXICON.items() if v["class"] != "EXCLUDED_O"]
+print(f"Active lemmas: {len(active)} | Excluded (Kelompok C): {len(excluded)} -> {excluded}")
+

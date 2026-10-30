@@ -1,0 +1,211 @@
+{
+  ">aroD": {
+    "arabic": "أَرْض",
+    "pos": "N",
+    "class": "AstronomicalBody",
+    "aliases": [
+      "bumi"
+    ],
+    "group": "A",
+    "description": "Bumi sebagai benda langit / ciptaan"
+  },
+  "$amos": {
+    "arabic": "شَمْس",
+    "pos": "N",
+    "class": "AstronomicalBody",
+    "aliases": [
+      "matahari"
+    ],
+    "group": "A",
+    "description": "Matahari sebagai benda langit"
+  },
+  "samaA^'": {
+    "arabic": "سَمَاء",
+    "pos": "N",
+    "class": "AstronomicalBody",
+    "aliases": [
+      "langit"
+    ],
+    "group": "A",
+    "description": "Langit sebagai benda kosmik"
+  },
+  "jaHiym": {
+    "arabic": "جَحِيم",
+    "pos": "N",
+    "class": "AfterlifeLocation",
+    "aliases": [
+      "Jahim",
+      "neraka Jahim"
+    ],
+    "group": "A",
+    "description": "Tempat di akhirat: Neraka Jahim"
+  },
+  "Haj~": {
+    "arabic": "حَجّ",
+    "pos": "N",
+    "class": "Event",
+    "aliases": [
+      "haji",
+      "ibadah haji"
+    ],
+    "group": "A",
+    "description": "Peristiwa / ritual ibadah haji"
+  },
+  "qiya`map": {
+    "arabic": "قِيَٰمَة",
+    "pos": "N",
+    "class": "Event",
+    "aliases": [
+      "hari Kiamat",
+      "Kiamat"
+    ],
+    "group": "A",
+    "expand_prefix": [
+      "hari"
+    ],
+    "description": "Peristiwa hari Kiamat"
+  },
+  "qamar": {
+    "arabic": "قَمَر",
+    "pos": "N",
+    "class": "AstronomicalBody",
+    "aliases": [
+      "bulan"
+    ],
+    "group": "B",
+    "description": "Bulan sebagai benda langit (bukan satuan waktu syahr)"
+  },
+  "A^xir": {
+    "arabic": "ءَاخِر",
+    "pos": "ADJ",
+    "class": "Event",
+    "aliases": [
+      "hari Akhir"
+    ],
+    "group": "B",
+    "require_prefix": [
+      "hari"
+    ],
+    "description": "Hari Akhir (hanya jika bersanding dengan kata hari / lema yawm)"
+  },
+  "Earo$": {
+    "arabic": "عَرْش",
+    "pos": "N",
+    "class": "Throne",
+    "aliases": [
+      "ʻArasy",
+      "‘Arasy",
+      "Arasy",
+      "‘Arasy-Nya"
+    ],
+    "group": "B",
+    "description": "Singgasana / Arasy Allah"
+  },
+  "man~": {
+    "arabic": "مَنّ",
+    "pos": "N",
+    "class": "Food",
+    "aliases": [
+      "manna"
+    ],
+    "group": "B",
+    "description": "Makanan surgawi manna"
+  },
+  "salowaY`": {
+    "arabic": "سَلْوَىٰ",
+    "pos": "N",
+    "class": "Food",
+    "aliases": [
+      "salwa"
+    ],
+    "group": "B",
+    "description": "Makanan burung salwa"
+  },
+  "tiyn": {
+    "arabic": "تِين",
+    "pos": "N",
+    "class": "Fruit",
+    "aliases": [
+      "tin",
+      "buah tin"
+    ],
+    "group": "B",
+    "description": "Buah tin"
+  },
+  "zayotuwn": {
+    "arabic": "زَيْتُون",
+    "pos": "N",
+    "class": "Fruit",
+    "aliases": [
+      "zaitun",
+      "buah zaitun",
+      "pohon zaitun"
+    ],
+    "group": "B",
+    "description": "Buah zaitun"
+  },
+  "rum~aAn": {
+    "arabic": "رُمَّان",
+    "pos": "N",
+    "class": "Fruit",
+    "aliases": [
+      "delima",
+      "buah delima"
+    ],
+    "group": "B",
+    "description": "Buah delima"
+  },
+  "SuHuf": {
+    "arabic": "صُحُف",
+    "pos": "N",
+    "class": "TheBookOfAllah",
+    "aliases": [
+      "Suhuf",
+      "lembaran-lembaran suci",
+      "kitab-kitab"
+    ],
+    "group": "B",
+    "description": "Lembaran wahyu Allah"
+  },
+  ">aboyaD": {
+    "arabic": "أَبْيَض",
+    "pos": "ADJ",
+    "class": "Color",
+    "aliases": [
+      "putih"
+    ],
+    "group": "B",
+    "description": "Warna putih"
+  },
+  ">asowad": {
+    "arabic": "أَسْوَد",
+    "pos": "ADJ",
+    "class": "Color",
+    "aliases": [
+      "hitam"
+    ],
+    "group": "B",
+    "description": "Warna hitam"
+  },
+  "Sufor": {
+    "arabic": "صُفْر",
+    "pos": "ADJ",
+    "class": "Color",
+    "aliases": [
+      "kuning",
+      "kuning tua"
+    ],
+    "group": "B",
+    "description": "Warna kuning"
+  },
+  "xuDor": {
+    "arabic": "خُضْر",
+    "pos": "ADJ",
+    "class": "Color",
+    "aliases": [
+      "hijau"
+    ],
+    "group": "B",
+    "description": "Warna hijau"
+  }
+}
