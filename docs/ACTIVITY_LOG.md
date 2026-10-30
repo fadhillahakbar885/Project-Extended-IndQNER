@@ -91,3 +91,11 @@ Format Pencatatan:
     2. Berhasil mengekstrak **191.084 Token** dan mengidentifikasi serta melabeli **6.518 Entitas Qurani** (ekspansi >2,5x lipat dari dataset IndQNER 1.0 yang hanya 2.575 entitas pada 8 surah).
     3. Arsitektur Pelabelan Bertingkat terbukti sangat efisien: **6.485 entitas (99,49%)** terselesaikan deterministik via Kamus Lapis 1 (0% halusinasi, kecepatan tinggi), dan **33 entitas (0,51%)** unmapped diselesaikan via LLM Lapis 2.
     4. Dataset hasil perluasan tersimpan dalam format CoNLL BIO standar industri di `data/output/extended_indqner.txt` dengan jaminan Zero Deletion, dan profil statistik tersimpan di `data/output/extended_indqner_stats.json`.
+
+* **2026-10-31 - 05:30:00**
+  * **Aktivitas:** Penyusunan modul pengujian LLM-as-Labeler (Llama-3-8B) pada GPU T4 Google Colab dan ekstraksi berkas payload pengujian (Ablation Study).
+  * **Folder/File Terkait:** `notebooks/Colab_Llama3_Labeler_T4.ipynb`, `data/intermediate/llm_colab_payload.json`, `src/labeling/prepare_llm_payload.py`, `src/labeling/integrate_colab_results.py`.
+  * **Keterangan/Hasil:** 
+    1. Berhasil mengekstrak payload `llm_colab_payload.json` yang memuat 33 entitas unmapped 114 surah dan 237 entitas ground-truth test set resmi.
+    2. Menghasilkan notebook Jupyter teroptimasi GPU T4 (`notebooks/Colab_Llama3_Labeler_T4.ipynb`) menggunakan kuantisasi 4-bit (`bitsandbytes`) untuk pengujian Zero-Shot vs Few-Shot.
+    3. Membangun modul integrasi kembali hasil prediksi Colab (`src/labeling/integrate_colab_results.py`) untuk pemutakhiran kamus dan dataset secara otomatis.
