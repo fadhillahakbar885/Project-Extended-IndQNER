@@ -124,3 +124,8 @@ Format Pencatatan:
     1. Menghasilkan partisi dataset downstream bebas kebocoran data (*0% Data Leakage Guarantee*): `baseline_train.txt` (1.050 ayat, 2.095 entitas), `extended_train.txt` (5.353 ayat, 5.649 entitas), `dev.txt` (161 ayat), dan `test.txt` (176 ayat).
     2. Mengompresi seluruh partisi ke `data/downstream/downstream_data.zip` (2,1 MB) untuk kemudahan unggah 1-klik ke Colab.
     3. Membangun Google Colab Notebook teroptimasi GPU T4 (`notebooks/Colab_IndoBERT_Downstream_NER.ipynb`) untuk fine-tuning komparatif Model A (Baseline) vs Model B (Extended) dan evaluasi strict CoNLL resmi seqeval.
+
+* **2026-10-31 - 08:48:00**
+  * **Aktivitas:** Penyesuaian parameter inisialisasi HuggingFace Trainer pada Notebook Downstream NER untuk kompatibilitas pustaka `transformers` v4.46+.
+  * **Folder/File Terkait:** `notebooks/Colab_IndoBERT_Downstream_NER.ipynb`.
+  * **Keterangan/Hasil:** Memperbarui parameter `tokenizer=tokenizer` menjadi `processing_class=tokenizer` pada Sel 6 (Model A) dan Sel 7 (Model B) sesuai standar mutakhir HuggingFace.
