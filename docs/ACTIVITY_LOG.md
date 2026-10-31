@@ -111,8 +111,16 @@ Format Pencatatan:
 
 * **2026-10-31 - 07:05:00**
   * **Aktivitas:** Integrasi modul evaluasi Large Language Model (Google Gemini 1.5 Pro / Flash) ke dalam Notebook Google Colab T4 untuk Studi Ablasi Multi-LLM (Small vs Large LLM).
-  * **Folder/File Terkait:** `notebooks/Colab_Llama3_Labeler_T4.ipynb`.
+  * **Folder/File Terkait:** `notebooks/Colab_Llama3_Labeler_T4.ipynb`, `data/intermediate/multi_llm_comparative_results.json`.
   * **Keterangan/Hasil:** 
     1. Berhasil menambahkan pipeline pengujian komparatif Large LLM (Gemini 1.5) berdampingan dengan Small LLM (Llama-3-8B).
     2. Menyediakan analisis khusus ambiguitas teologis antara kelas `Prophet` (Nabi) vs `Messenger` (Rasul) untuk menguji hipotesis *Model Scaling Effect*.
-    3. Menghasilkan format tabel komparasi tripartit (Kamus vs Small LLM vs Large LLM) dan ekspor hasil gabungan ke `multi_llm_comparative_results.json`.
+    3. Hasil eksekusi Small LLM Llama-3-8B di GPU T4 mencapai Akurasi 80,17% dan Weighted F1 83,14% pada 237 entitas ground-truth, serta sukses melabeli entitas unmapped `'Yasrib'` (QS. 33:13) sebagai `GeographicalLocation`.
+
+* **2026-10-31 - 08:35:00**
+  * **Aktivitas:** Implementasi dan penyiapan berkas Evaluasi Ekstrinsik (*Downstream NER Task*) menggunakan Transformer IndoBERT (`indobenchmark/indobert-base-p1`).
+  * **Folder/File Terkait:** `src/evaluation/prepare_downstream_data.py`, `data/downstream/`, `notebooks/Colab_IndoBERT_Downstream_NER.ipynb`.
+  * **Keterangan/Hasil:** 
+    1. Menghasilkan partisi dataset downstream bebas kebocoran data (*0% Data Leakage Guarantee*): `baseline_train.txt` (1.050 ayat, 2.095 entitas), `extended_train.txt` (5.353 ayat, 5.649 entitas), `dev.txt` (161 ayat), dan `test.txt` (176 ayat).
+    2. Mengompresi seluruh partisi ke `data/downstream/downstream_data.zip` (2,1 MB) untuk kemudahan unggah 1-klik ke Colab.
+    3. Membangun Google Colab Notebook teroptimasi GPU T4 (`notebooks/Colab_IndoBERT_Downstream_NER.ipynb`) untuk fine-tuning komparatif Model A (Baseline) vs Model B (Extended) dan evaluasi strict CoNLL resmi seqeval.

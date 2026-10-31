@@ -1,0 +1,22 @@
+{
+  "baseline_train": {
+    "verses": 1050,
+    "tokens": 49076,
+    "entities": 2095
+  },
+  "extended_train": {
+    "verses": 5353,
+    "tokens": 162262,
+    "entities": 5649
+  },
+  "dev": {
+    "verses": 161,
+    "tokens": 6895,
+    "entities": 231
+  },
+  "test": {
+    "verses": 176,
+    "tokens": 6056,
+    "entities": 237
+  }
+}
