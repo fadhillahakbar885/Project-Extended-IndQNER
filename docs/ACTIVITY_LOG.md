@@ -129,3 +129,19 @@ Format Pencatatan:
   * **Aktivitas:** Penyesuaian parameter inisialisasi HuggingFace Trainer pada Notebook Downstream NER untuk kompatibilitas pustaka `transformers` v4.46+.
   * **Folder/File Terkait:** `notebooks/Colab_IndoBERT_Downstream_NER.ipynb`.
   * **Keterangan/Hasil:** Memperbarui parameter `tokenizer=tokenizer` menjadi `processing_class=tokenizer` pada Sel 6 (Model A) dan Sel 7 (Model B) sesuai standar mutakhir HuggingFace.
+
+* **2026-10-31 - 09:10:00**
+  * **Aktivitas:** Penerimaan dan analisis komprehensif hasil Evaluasi Ekstrinsik (*Downstream NER Task*) model IndoBERT pada Unseen Test Set (176 ayat, 237 entitas).
+  * **Folder/File Terkait:** `data/intermediate/downstream_evaluation_results.json`, `notebooks/Colab_IndoBERT_Downstream_NER Hasil Running.ipynb`.
+  * **Keterangan/Hasil:** 
+    1. Pembuktian Hipotesis Utama Skripsi Berhasil: Dataset Extended IndQNER (114 Surah) terbukti meningkatkan performa generalisasi model secara masif pada metrik Macro (objektif antar-kelas):
+       - **Macro F1-Score melonjak dari 69,01% menjadi 77,09% (+8,08%)**!
+       - **Macro Precision melonjak dari 72,52% menjadi 81,55% (+9,03%)**!
+       - **Macro Recall melonjak dari 68,05% menjadi 75,08% (+7,03%)**!
+    2. Model Extended sukses mengatasi kebutaan (*zero recognition*) Model Baseline pada kelas langka:
+       - Kelas `GeographicalLocation`: melonjak drastis dari **F1: 0,00% menjadi F1: 80,00%**!
+       - Kelas `Prophet`: melonjak dari **F1: 80,00% menjadi F1: 100,00% (Sempurna)**!
+       - Kelas `Person`: melonjak dari **F1: 88,89% menjadi F1: 96,00% (+7,11%)**!
+       - Kelas `Messenger`: melonjak menjadi **F1: 97,30% (+1,20%)**!
+       - Kelas `AstronomicalBody`: melonjak menjadi **F1: 80,00% (+1,57%)**!
+    3. Seluruh bukti empiris tersimpan aman di `data/intermediate/downstream_evaluation_results.json` dan siap disajikan dalam tabel dan grafik Bab IV Skripsi.

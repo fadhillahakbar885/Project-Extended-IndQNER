@@ -1,0 +1,240 @@
+{
+  "metadata": {
+    "task": "Downstream Named Entity Recognition (Extrinsic Evaluation)",
+    "backbone_model": "indobenchmark/indobert-base-p1",
+    "hardware": "Google Colab GPU T4",
+    "data_summary": {
+      "baseline_train": {
+        "verses": 1050,
+        "tokens": 49076,
+        "entities": 2095
+      },
+      "extended_train": {
+        "verses": 5353,
+        "tokens": 162262,
+        "entities": 5649
+      },
+      "dev": {
+        "verses": 161,
+        "tokens": 6895,
+        "entities": 231
+      },
+      "test": {
+        "verses": 176,
+        "tokens": 6056,
+        "entities": 237
+      }
+    }
+  },
+  "model_a_baseline": {
+    "precision": 0.934156378600823,
+    "recall": 0.9578059071729957,
+    "f1_score": 0.9458333333333333,
+    "classification_report": {
+      "AfterlifeLocation": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 2
+      },
+      "Allah": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 136
+      },
+      "Angel": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2
+      },
+      "AstronomicalBody": {
+        "precision": 0.6451612903225806,
+        "recall": 1.0,
+        "f1-score": 0.7843137254901961,
+        "support": 20
+      },
+      "Color": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "Event": {
+        "precision": 1.0,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.923076923076923,
+        "support": 7
+      },
+      "GeographicalLocation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3
+      },
+      "HolyBook": {
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1-score": 0.9473684210526316,
+        "support": 10
+      },
+      "Language": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "Messenger": {
+        "precision": 0.925,
+        "recall": 1.0,
+        "f1-score": 0.961038961038961,
+        "support": 37
+      },
+      "Person": {
+        "precision": 0.8571428571428571,
+        "recall": 0.9230769230769231,
+        "f1-score": 0.888888888888889,
+        "support": 13
+      },
+      "Prophet": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.8,
+        "support": 3
+      },
+      "Religion": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2
+      },
+      "micro avg": {
+        "precision": 0.934156378600823,
+        "recall": 0.9578059071729957,
+        "f1-score": 0.9458333333333333,
+        "support": 237
+      },
+      "macro avg": {
+        "precision": 0.7251772421127259,
+        "recall": 0.6805297266835729,
+        "f1-score": 0.6901041220164821,
+        "support": 237
+      },
+      "weighted avg": {
+        "precision": 0.929413852106788,
+        "recall": 0.9578059071729957,
+        "f1-score": 0.9386870364101232,
+        "support": 237
+      }
+    }
+  },
+  "model_b_extended": {
+    "precision": 0.9285714285714286,
+    "recall": 0.9324894514767933,
+    "f1_score": 0.9305263157894738,
+    "classification_report": {
+      "AfterlifeLocation": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 2
+      },
+      "Allah": {
+        "precision": 0.9624060150375939,
+        "recall": 0.9411764705882353,
+        "f1-score": 0.9516728624535316,
+        "support": 136
+      },
+      "Angel": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2
+      },
+      "AstronomicalBody": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1-score": 0.8,
+        "support": 20
+      },
+      "Color": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "Event": {
+        "precision": 1.0,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.923076923076923,
+        "support": 7
+      },
+      "GeographicalLocation": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.8,
+        "support": 3
+      },
+      "HolyBook": {
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1-score": 0.9473684210526316,
+        "support": 10
+      },
+      "Language": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "Messenger": {
+        "precision": 0.972972972972973,
+        "recall": 0.972972972972973,
+        "f1-score": 0.972972972972973,
+        "support": 37
+      },
+      "Person": {
+        "precision": 1.0,
+        "recall": 0.9230769230769231,
+        "f1-score": 0.9600000000000001,
+        "support": 13
+      },
+      "Prophet": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3
+      },
+      "Religion": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2
+      },
+      "micro avg": {
+        "precision": 0.9285714285714286,
+        "recall": 0.9324894514767933,
+        "f1-score": 0.9305263157894738,
+        "support": 237
+      },
+      "macro avg": {
+        "precision": 0.8155419734367103,
+        "recall": 0.7508489146498196,
+        "f1-score": 0.7709044497094404,
+        "support": 237
+      },
+      "weighted avg": {
+        "precision": 0.9376394572930216,
+        "recall": 0.9324894514767933,
+        "f1-score": 0.9307006974644658,
+        "support": 237
+      }
+    }
+  },
+  "comparison": {
+    "delta_precision": -0.5584950029394409,
+    "delta_recall": -2.5316455696202445,
+    "delta_f1_score": -1.5307017543859547
+  }
+}
