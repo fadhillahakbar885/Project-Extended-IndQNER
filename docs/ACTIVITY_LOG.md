@@ -1,7 +1,7 @@
 # Log Aktivitas Proyek 2: Extended IndQNER
 
 Format Pencatatan:
-`[Tanggal] - [Jam] - [Aktivitas] - [Folder/File Terkait] - [Keterangan/Hasil]`
+`[Tanggal] - [Jam] - [Aktivitas] - [Folder/File Terkait] - [Keterangan/Hasil]
 
 ---
 
@@ -108,3 +108,11 @@ Format Pencatatan:
     2. Menghapus toleransi Levenshtein edit distance 1 pada kata pendek $\le 4$ karakter dan menerapkan *Strict Exact Match + Stopword Blacklist* Bahasa Indonesia. Terbukti 100% melenyapkan false positive kata fungsi (*"hari"*, *"ada"*, *"adalah"*).
     3. Entitas unmapped riil di korpus 114 surah terbukti murni tersisa 1 entitas sejati: `'Yasrib'` (QS. 33:13).
     4. Dataset Extended IndQNER bersih teregenerasi memuat 6.514 entitas tervalidasi.
+
+* **2026-10-31 - 07:05:00**
+  * **Aktivitas:** Integrasi modul evaluasi Large Language Model (Google Gemini 1.5 Pro / Flash) ke dalam Notebook Google Colab T4 untuk Studi Ablasi Multi-LLM (Small vs Large LLM).
+  * **Folder/File Terkait:** `notebooks/Colab_Llama3_Labeler_T4.ipynb`.
+  * **Keterangan/Hasil:** 
+    1. Berhasil menambahkan pipeline pengujian komparatif Large LLM (Gemini 1.5) berdampingan dengan Small LLM (Llama-3-8B).
+    2. Menyediakan analisis khusus ambiguitas teologis antara kelas `Prophet` (Nabi) vs `Messenger` (Rasul) untuk menguji hipotesis *Model Scaling Effect*.
+    3. Menghasilkan format tabel komparasi tripartit (Kamus vs Small LLM vs Large LLM) dan ekspor hasil gabungan ke `multi_llm_comparative_results.json`.
