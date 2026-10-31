@@ -153,3 +153,11 @@ Format Pencatatan:
     1. Menghasilkan naskah skripsi berformat Microsoft Word (.docx) siap cetak dan siap diedit berstandar pedoman penulisan UIN Syarif Hidayatullah Jakarta (Margin 4-4-3-3 cm, Times New Roman 12 pt, 1.5 spasi).
     2. Memuat tabel-tabel evaluasi resmi: Tabel 4.1 (Statistik Korpus), Tabel 4.2 (Distribusi Kontribusi 4 Jalur), Tabel 4.3 (Evaluasi Intrinsik seqeval 20 Kelas), Tabel 4.4 (Studi Ablasi Multi-LLM di GPU T4), dan Tabel 4.5 (Evaluasi Ekstrinsik Downstream IndoBERT).
     3. Menyediakan versi Markdown (.md) lengkap untuk kemudahan navigasi di IDE/editor.
+
+* **2026-10-31 - 09:30:00**
+  * **Aktivitas:** Pengunggahan dan sinkronisasi seluruh repositori Proyek 2 ke repositori publik GitHub (`https://github.com/fadhillahakbar885/Project-Extended-IndQNER.git`).
+  * **Folder/File Terkait:** Seluruh berkas repositori (`src/`, `data/`, `docs/`, `notebooks/`, `File Kepenulisan/`, `indqner_1.0/`, `QAC/`, `Teks Terjemahan/`).
+  * **Keterangan/Hasil:** 
+    1. Berhasil menambahkan remote origin dan menyetel branch utama ke `main`.
+    2. Berhasil melakukan `git push -u origin main` dengan 100% berkas terunggah rapi dan aman tanpa melanggar batasan ukuran berkas GitHub.
+    3. Repositori daring siap diakses untuk transparansi dan reproduksibilitas ilmiah (*reproducible research*).
