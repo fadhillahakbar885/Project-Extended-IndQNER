@@ -226,3 +226,4 @@ Sebaliknya, Model Extended B yang dilatih dengan dataset hasil perluasan 114 sur
 ### B. Saran
 1. Penelitian selanjutnya dapat mengeksplorasi integrasi ontologi relasi antar-entitas (*Relation Extraction*) untuk memetakan nasab dan hubungan silsilah para nabi dalam Al-Qur'an.
 2. Perluasan dapat diterapkan pada edisi terjemahan tafsir berbahasa daerah di Indonesia (misalnya Tafsir Al-Ibriz berbahasa Jawa atau Sunda) menggunakan kerangka multi-channel cross-lingual yang serupa.
+
