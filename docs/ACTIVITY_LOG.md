@@ -145,3 +145,11 @@ Format Pencatatan:
        - Kelas `Messenger`: melonjak menjadi **F1: 97,30% (+1,20%)**!
        - Kelas `AstronomicalBody`: melonjak menjadi **F1: 80,00% (+1,57%)**!
     3. Seluruh bukti empiris tersimpan aman di `data/intermediate/downstream_evaluation_results.json` dan siap disajikan dalam tabel dan grafik Bab IV Skripsi.
+
+* **2026-10-31 - 09:18:00**
+  * **Aktivitas:** Sinkronisasi dan penyusunan naskah skripsi lengkap (Bab I, II, III diselaraskan dengan arsitektur 4-jalur & 5 guardrails; Bab IV Hasil dan Pembahasan memuat seluruh data empiris; Bab V Kesimpulan dan Saran).
+  * **Folder/File Terkait:** `File Kepenulisan/DRAFT_SKRIPSI_LENGKAP_BAB_I_SD_V.docx`, `File Kepenulisan/DRAFT_SKRIPSI_LENGKAP_BAB_I_SD_V.md`, `src/utils/generate_thesis_draft.py`.
+  * **Keterangan/Hasil:** 
+    1. Menghasilkan naskah skripsi berformat Microsoft Word (.docx) siap cetak dan siap diedit berstandar pedoman penulisan UIN Syarif Hidayatullah Jakarta (Margin 4-4-3-3 cm, Times New Roman 12 pt, 1.5 spasi).
+    2. Memuat tabel-tabel evaluasi resmi: Tabel 4.1 (Statistik Korpus), Tabel 4.2 (Distribusi Kontribusi 4 Jalur), Tabel 4.3 (Evaluasi Intrinsik seqeval 20 Kelas), Tabel 4.4 (Studi Ablasi Multi-LLM di GPU T4), dan Tabel 4.5 (Evaluasi Ekstrinsik Downstream IndoBERT).
+    3. Menyediakan versi Markdown (.md) lengkap untuk kemudahan navigasi di IDE/editor.
